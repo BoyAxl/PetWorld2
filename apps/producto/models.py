@@ -8,9 +8,9 @@ class Animal(models.Model):
     class Meta:
         verbose_name = 'Animal'
         verbose_name_plural = 'Animales'
-        ordering = ['nombre']
+        ordering = ['nombre'] #se ordena por nombre
 
-    # De esta forma se muestra el nombre del objeto en la Base de Datos
+    # De esta forma se muestra el nombre del objeto en la lista de objetos creados
     def __str__(self):
         return self.nombre
 
@@ -20,7 +20,8 @@ class Producto(models.Model):
     descripcion = models.CharField('Descripción', max_length = 200, blank = False, null = False)
     peso = models.CharField('Peso', max_length = 10, blank = True, null = True)
     valor = models.IntegerField('Valor', blank = False, null = False)
-    animal_id = models.OneToOneField(Animal, on_delete = models.CASCADE)
+    animal_id = models.ManyToManyField(Animal) #Relación Muchos a Muchos (pueden haber varios productos correspondientes a varios tipos de animales)
+    stock = models.BigIntegerField('Stock', blank = False, null = False)
     #falta añadir un campo de imagen
 
     class Meta:
