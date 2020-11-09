@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creación de Animal</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block titulo %}
+    Creación de Animales
+{% endblock titulo %}
+
+{% block body %}
     <form method="POST">
       {% csrf_token %}
         {{ animal_form.as_p }}
         <button type = "submit">Crear</button>
     </form>
-</body>
-</html>
+{% endblock body %}
