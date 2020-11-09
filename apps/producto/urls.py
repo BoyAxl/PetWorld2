@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import Home
+from .views import crearAnimal
 
 urlpatterns = [
-    path('',Home, name = 'index')
+    path('crear_animal/',crearAnimal, name = 'crear_animal')
 ]
