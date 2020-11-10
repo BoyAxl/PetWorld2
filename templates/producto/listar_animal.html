@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+    Listado de Animales
+{% endblock titulo %}
+
+{% block body %}
+
+    {% if animales %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animales %}
+            <tr>
+                <td>{{ animal.id }}</td>
+                <td>{{ animal.nombre }</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h1> No existen animales registrados </h1>
+    {% endif %}
+
+    {% endblock body %}
