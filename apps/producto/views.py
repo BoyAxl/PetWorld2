@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import AnimalForm
 from .models import Animal
 
@@ -6,7 +7,8 @@ from .models import Animal
 def Home(request):
     return render(request,'index.html') #funcion que renderiza, pinta un template con la información que deseamos
 
-#CRUD que nos permite crear un objeto del tipo Animal
+#CRUDS Animales
+# que nos permite crear un objeto del tipo Animal
 def crearAnimal(request):
     if request.method == 'POST':
         animal_form = AnimalForm(request.POST)
@@ -17,7 +19,25 @@ def crearAnimal(request):
         animal_form = AnimalForm()
     return render(request,'producto/crear_animal.html',{'animal_form':animal_form})
 
-#CRUD que nos permite listar los objetos de tipo Animal
+# que nos permite listar los objetos de tipo Animal
 def listarAnimal(request):
     animales = Animal.objects.all()
     return render(request,'producto/listar_animal.html',{'animales':animales})
+
+# que nos permite editar un objeto del tipo Animal
+
+def editarAnimal(request,id):
+    animal_form = None
+    error = None
+    try:
+        animal = Animal.objects.get(id = id)
+        if request.method == 'GET': #preguntamos si se está trayendo la información para renderizarla y editarla. Si el metodo es Get entonces
+            animal_form = AnimalForm(instance = animal) #formulario será llenado con la informacion del objeto encontrado
+        else: #si no obtuvimos un GET, siginifica que procederemos a Guardar la información
+            animal_form = AnimalForm(request.POST, instance = animal)
+            if animal_form.is_valid(): # si es valido el formulario
+                animal_form.save() # se guarda en la base de datos
+            return redirect('index') # luego nos redirecciona al index
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request,'producto/crear_animal.html',{'animal_form':animal_form, 'error':error})    

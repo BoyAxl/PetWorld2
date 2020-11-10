@@ -12,6 +12,7 @@
             <tr>
                 <th>#</th>
                 <th>Nombre</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
             <tr>
                 <td>{{ animal.id }}</td>
                 <td>{{ animal.nombre }}</td>
+                <td>
+                    <a href="{% url 'producto:editar_animal' animal.id %}">Editar</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

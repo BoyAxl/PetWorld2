@@ -4,9 +4,14 @@
 {% endblock titulo %}
 
 {% block body %}
-    <form method="POST">
-      {% csrf_token %}
+<form method="POST">
+    {% csrf_token %}
+    {% if error %}
+        <h2>{{ error }}</h2>
+    {% else %}  
         {{ animal_form.as_p }}
         <button type = "submit">Crear</button>
-    </form>
+    {% endif %}  
+    
+</form>
 {% endblock body %}
