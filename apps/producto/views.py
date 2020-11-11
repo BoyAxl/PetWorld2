@@ -41,3 +41,10 @@ def editarAnimal(request,id):
     except ObjectDoesNotExist as e:
         error = e
     return render(request,'producto/crear_animal.html',{'animal_form':animal_form, 'error':error})    
+
+def eliminarAnimal(request,id):
+    animal = Animal.objects.get(id = id)
+    if request.method == 'POST':
+        animal.delete()
+        return redirect('producto:listar_animal')
+    return render(request,'producto/eliminar_animal.html',{'animal':animal})
