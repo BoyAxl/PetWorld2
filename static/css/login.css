@@ -1,0 +1,102 @@
+html, body{
+    background-color: #C5FFFA;
+    font-family: arial;
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+header{
+    background-color: #5B554B;
+    height: 60px;
+    padding:0
+}
+
+#logo-titulo{
+    float: left;
+    font-family: 'Bookman Old Style',Arial;
+    font-size: 20pt;
+    color: #ffffff;
+}
+
+#logo-imagen{
+	width: 30px;
+    margin: 15px;
+    float: left;
+}
+
+img{
+    width: 50px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.menu{
+	float: left;
+    list-style: none;
+    border-right: black 1px solid;
+    text-align: center;
+    font-size: 15px;
+}
+
+.link-menu{
+    height: 40px;
+    width: 60px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+li{
+    float: left;
+    list-style: none;
+    padding: 0px;
+}
+
+nav{
+    float: right;
+    margin-top: 0px;
+    margin-right: 150px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    display: table-cell;
+}
+
+li:hover a{
+    color:black;
+}
+
+.login{
+    border: 1px solid #1E679A;
+    height: 347px;
+    width: 250px;
+    margin-left: 28%;
+    margin-top: 5%;
+    float: left;
+    background-color:grey;
+    border-radius: 20px;
+}
+
+.titulo{
+    background: orangered;
+    border-top-width: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 96%;
+    height: 30px;
+    padding: 5px;
+}
+
+.cuerpo{
+    margin-left: 10%;
+    margin-top: 20%;
+    margin-right: 10%;
+}
+
+.error{
+    color: darkred;
+
+}

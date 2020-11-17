@@ -1,19 +1,305 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Este es mi Index{% endblock title %}</title>
-    {% block extracss %}
-    {% endblock extracss %}
-</head>
-<body>
-    {% block body %}
-    <h1>Holi °w°</h1>
-    {% endblock body %}
-    
+{% load static %}
+<html lang="us">
+    <head>
+        <meta charset="UTF-8"><!-- Unicode facilita el intercambio de archivos de texto internacionales y añade letras como tilde, ñ .-->
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <title>Pet World</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+        <link rel="icon" type="images/dog" href="{% static 'images/dog.png' %}"><!--icono en barra de navegacion-->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <!--Para carrito-->
+        <script src="js/carrito.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!--Pack de iconos-->
+        <script src="https://kit.fontawesome.com/bbf2a66727.js" crossorigin="anonymous"></script>
+    </head>
 
-    {% block extrajs %}
-    {% endblock extrajs %}
-</body>
+    <body>
+
+<nav class="barra_inicio">
+
+    <ul>
+        <li id="navLogo"><img id="logopatita" src="{% static 'images/petworld-black.png' %}" alt="X"></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Acerca de Nosotros</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contactanos</a></li>
+    </ul>
+
+</nav>
+
+<nav class="titular">
+
+    <h1>Realiza compras seguras</h1>
+    <h2>No te pierdas nuestros productos para tus mascotas</h2>
+    <div class="wave" style="height: 150px; " ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 516.08,41.94 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #08f;"></path></svg>
+    </div><!--wave- ola para adornar-->
+</nav>
+
+<div class="barra_nav">
+
+    <ul>
+        <li><a href="#">Farmacia</a>
+            <ul class="submenu"><!--submenu-->
+                <li><a href="#">Pipetas</a></li>
+                <li><a href="#">Vitaminas</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Perros</a>
+            <ul class="submenu"><!--submenu-->
+                <li><a href="#">Alimentos</a></li>
+                <li><a href="#">Juguetes</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Gatos</a>
+            <ul class="submenu"><!--submenu-->
+                <li><a href="#">Alimentos</a></li>
+                <li><a href="#">juguetes</a></li>
+                <li><a href="#">Arena</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Exóticos</a>
+            <ul class="submenu"><!--submenu-->
+                <li><a href="#">Alimentos</a></li>
+                <li><a href="#">Habitat</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Información</a>
+            <ul class="submenu"><!--submenu-->
+                <li><a href="#">Calidad</a></li>
+                <li><a href="#">Horario</a></li>
+            </ul>
+        </li>
+        <li></li>
+        <li class="red"><a href=#>
+            <label for="show" id="registrarc">
+            <img class="icono_nav" src="{% static 'images/user.png' %}" alt="X"></label></a></li>
+        <li class="red"><a href="javascript:paypal.minicart.view.show()" >
+            <img class="icono_nav" src="{% static 'images/carrito.png' %}" alt="X"></a></li>
+        <li class="red"><a href="http://www.facebook.com/" target="_blank">
+            <img class="icono_nav" src="{% static 'images/facebook.png' %}" alt="X"></a></li>
+        <li class="red"><a href="https://www.instagram.com/rollo_kaim/" target="_blank">
+            <img class="icono_nav" src="{% static 'images/instagram.png' %}" alt="X"></a></li>
+    </ul>
+</div>
+    <!--Ventana Carrito Compra-->
+    <div class="ventana-carrito" id="vent-carr">
+
+        <div id="titulo-carrito">Carrito de Compras</div>
+        <a id="link-cerrar" href="javascript:cerrar()">
+
+        </a>
+        <ul id="carrito" class="list-group"></ul>
+    </div>
+
+<div class="lista-promo">
+    <h1> Aprovecha nuestras promociones registrandote</h1>
+
+    <div class="main-carousel" data-flickity='{"draggable": false, "wrapAround": true,
+        "autoPlay": true, "cellAlign": "center", "watchCSS": false}'>
+
+        <div class="carousel-cell"><a class="precio" href=#>
+            <h3 class="titulo-prod">Comida de Gato 15Kg</h3>
+            <img class="image-carousel" src="{% static 'images/comidaGato.jpg' %}" alt="x">
+            <p class="valor"> CLP $15.000</p></a>
+
+            <div class="comprar-producto">
+                <a class="link-comprar" titulo-prod="Comida de Gato 15Kgo" valor="15000" href="#">
+                    Añadir a Carrito
+                </a>
+            </div>
+        </div>
+        <div class="carousel-cell"><a class="precio" href=#>
+            <h3 class="titulo-prod">Comida de Perro 15Kg</h3>
+            <img class="image-carousel" src="{%static 'images/comidaPerro.jpg' %}" alt="x">
+            <p class="valor"> CLP $13.000</p></a>
+
+            <div class="comprar-producto">
+                <a class="link-comprar" titulo-prod="Comida de Perro 15Kg" valor="13000" href="#">
+                    Añadir a Carrito
+                </a>
+            </div>
+        </div>
+        <div class="carousel-cell"><a class="precio" href=#>
+            <h3 class="titulo-prod">Pipeta perros de 4kg/10kg</h3>
+            <img class="image-carousel" src="{% static 'images/pipetaPerro.jpeg' %}" alt="x">
+            <p class="valor"> CLP $10.000</p></a>
+
+            <div class="comprar-producto">
+                <a class="link-comprar" titulo-prod="Pipeta perros de 4kg/10kg" valor="10000" href="#">
+                    Añadir a Carrito
+                </a>
+            </div>
+        </div>
+        <div class="carousel-cell"><a class="precio" href=#>
+            <h3 class="titulo-prod">Arbol para gatos</h3>
+            <img class="image-carousel" src="{% static 'images/rascadorGato.jpg' %}" alt="x">
+            <p class="valor"> CPL $18.000</p></a>
+
+            <div class="comprar-producto">
+                <a class="link-comprar" titulo-prod="Arbol para gatos" valor="18000" href="#">
+                    Añadir a Carrito
+                </a>
+            </div>
+        </div>
+        <div class="carousel-cell"><a class="precio" href=#>
+            <h3 class="titulo-prod">Bola para hamster</h3>
+            <img class="image-carousel" src="{% static 'images/bolaHamster.jpg' %}" alt="x">
+            <p class="valor"> CPL $8.000</p></a>
+
+            <div class="comprar-producto">
+                <a class="link-comprar" titulo-prod="Bola para hamster" valor="8000" href="#">
+                    Añadir a Carrito
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--galeria de imagenes-->
+<div class="container gallery-container">
+
+    <h1>Galeria de la tienda</h1>
+
+    <p class="page-description text-center">¡Adopción, farmacia y más!</p>
+
+    <div class="tz-gallery">
+
+        <div class="row">
+
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="images/jugueteperro.jpg">
+                    <img src="images/jugueteperro.jpg" alt="Juguetes para perros">
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="images/farmacia.jpg">
+                    <img src="images/farmacia.jpg" alt="farmacia">
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <a class="lightbox" href="images/accesorios.jpg">
+                    <img src="images/accesorios.jpg" alt="accesorios">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="images/alimentos.jpg">
+                    <img src="images/alimentos.jpg" alt="Alimentos">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="images/jarabe.jpg">
+                    <img src="images/jarabe.jpg" alt="jarabe">
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <a class="lightbox" href="images/cachorros.jpg">
+                    <img src="images/cachorros.jpg" alt="cachorros">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>baguetteBox.run('.tz-gallery');</script>
+<!--termino de galeria-->
+<script src="{% static 'js/flickity-carousel.js' %}"></script><!--archivo de javascript para activar el carousel-->
+
+<footer>
+    <p>@ 2020 Pet World - All rights reserved.</p>
+</footer>
+
+<!--carrito-->
+<script src="js/minicart.js"></script>
+<script>
+    // configuracion inicial del carrito
+    paypal.minicart.render({
+        strings:{
+            button: 'Pagar'
+           ,buttonAlt: "Total"
+           ,subtotal: 'Total:'
+           ,empty: 'No hay productos en el carrito'
+        }
+    });
+
+    // eventos para agregar los productos al carrito
+    $('.link-comprar').click(function(e){
+       e.stopPropagation();
+        paypal.minicart.cart.add({
+        business: 'va.jamett@gmail.com', // Cuenta paypal para recibir el dinero
+        item_name: $(this).attr("titulo-prod"),
+         amount: $(this).attr("valor"),
+         currency_code: 'CLP',
+
+        });
+   });
+</script>
+
+<!--Registrar Usuario-->
+<input type="checkbox" id="show">
+    <nav id="espacio-oscuro"></nav>
+    <form class="register" method="POST">
+        <div class="wrapper">
+            <label for="show" class="close-btn fas fa-times"></label>
+            <div class="title">
+                Registro:
+            </div>
+            <div class="form">
+                <div class="input_field">
+                    <label>Nombre:</label>
+                    <input type="text" class="input" placeholder="Escribe tu nombre" required/>
+                </div>
+                <div class="input_field">
+                    <label>Apellido:</label>
+                    <input type="text" class="input" placeholder="Escribe tu apellido" required/>
+                </div>
+                <div class="input_field">
+                    <label>Contraseña:</label>
+                    <input type="password" class="input" placeholder="Escribe una contraseña" required/>
+                </div>
+                <div class="input_field">
+                    <label>Confirmar Contraseña:</label>
+                    <input type="password" class="input" required/>
+                </div>
+                <div class="input_field">
+                    <label>Genero:</label>
+                    <div class="custom_select">
+                        <select>
+                            <option value="">Seleccione</option>
+                            <option value="hombre">Hombre</option>
+                            <option value="mujer">Mujer</option>
+                            <option value="otre">Otro</option>
+                        </select>
+                </div>
+            </div>
+            <div class="input_field">
+                <label>Email:</label>
+                <input type="email" class="input" placeholder="Ingresa tú correo electrónico" required/>
+            </div>
+            <div class="input_field">
+                <label>Teléfono:</label>
+                <input type="number" class="input" placeholder="Ingresa tú número telefónico" required/>
+            </div>
+            <div class="input_field">
+                <label>Dirección:</label>
+                <textarea class="textarea"></textarea>
+            </div>
+            <div class="input_field_terms">
+                <label class="check">
+                    <input type="checkbox" required>
+                    <span class="checkmark"></span>
+                </label>
+                <p>Estoy deacuerdo con los terminos y condiciones</p>
+            </div>
+            <div class="input_field">
+                <input type="submit" value="Registrar!" class="btn"/>
+            </div>
+        </div>
+    </form>
+
+    </body>
 </html>
