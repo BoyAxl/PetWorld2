@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
-{% block titulo %}
-    Eliminación de Animales
-{% endblock titulo %}
+{% block title %}
+    Eliminar {{ animal.nombre }}
+{% endblock title %}
 {% block body %}
 <form method="POST">
     {% csrf_token %}

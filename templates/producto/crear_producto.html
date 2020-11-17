@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block title %}
-    Creación de Animales
+    Creación de Productos
 {% endblock title %}
 
 {% block body %}
@@ -9,9 +9,8 @@
     {% if error %}
         <h2>{{ error }}</h2>
     {% else %}  
-        {{ animal_form.as_p }}
+        {{ producto_form.as_p }}
         <button type = "submit">Crear</button>
     {% endif %}  
-    
 </form>
 {% endblock body %}
