@@ -4,15 +4,11 @@
         <meta charset="UTF-8"><!-- Unicode facilita el intercambio de archivos de texto internacionales y añade letras como tilde, ñ .-->
         <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
         <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-        <title>Pet World</title>
+        <title>{% block title %}Pet World{% endblock title %}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
         <link rel="icon" type="images/dog" href="{% static 'images/dog.png' %}"><!--icono en barra de navegacion-->
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <!--Para carrito-->
-        <script src="js/carrito.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <!--Pack de iconos-->
         <script src="https://kit.fontawesome.com/bbf2a66727.js" crossorigin="anonymous"></script>
     </head>
@@ -23,8 +19,8 @@
 
     <ul>
         <li id="navLogo"><img id="logopatita" src="{% static 'images/petworld-black.png' %}" alt="X"></li>
-        <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="#">Acerca de Nosotros</a></li>
+        <li><a href="{% url 'petworld:index' %}">Inicio</a></li>
+        <li><a href="{% url 'petworld:acerca_de_nosotros' %}">Acerca de Nosotros</a></li>
         <li><a href="#">Servicios</a></li>
         <li><a href="#">Contactanos</a></li>
     </ul>
@@ -106,55 +102,30 @@
             <img class="image-carousel" src="{% static 'images/comidaGato.jpg' %}" alt="x">
             <p class="valor"> CLP $15.000</p></a>
 
-            <div class="comprar-producto">
-                <a class="link-comprar" titulo-prod="Comida de Gato 15Kgo" valor="15000" href="#">
-                    Añadir a Carrito
-                </a>
-            </div>
         </div>
         <div class="carousel-cell"><a class="precio" href=#>
             <h3 class="titulo-prod">Comida de Perro 15Kg</h3>
             <img class="image-carousel" src="{%static 'images/comidaPerro.jpg' %}" alt="x">
             <p class="valor"> CLP $13.000</p></a>
 
-            <div class="comprar-producto">
-                <a class="link-comprar" titulo-prod="Comida de Perro 15Kg" valor="13000" href="#">
-                    Añadir a Carrito
-                </a>
-            </div>
         </div>
         <div class="carousel-cell"><a class="precio" href=#>
             <h3 class="titulo-prod">Pipeta perros de 4kg/10kg</h3>
             <img class="image-carousel" src="{% static 'images/pipetaPerro.jpeg' %}" alt="x">
             <p class="valor"> CLP $10.000</p></a>
 
-            <div class="comprar-producto">
-                <a class="link-comprar" titulo-prod="Pipeta perros de 4kg/10kg" valor="10000" href="#">
-                    Añadir a Carrito
-                </a>
-            </div>
         </div>
         <div class="carousel-cell"><a class="precio" href=#>
             <h3 class="titulo-prod">Arbol para gatos</h3>
             <img class="image-carousel" src="{% static 'images/rascadorGato.jpg' %}" alt="x">
             <p class="valor"> CPL $18.000</p></a>
 
-            <div class="comprar-producto">
-                <a class="link-comprar" titulo-prod="Arbol para gatos" valor="18000" href="#">
-                    Añadir a Carrito
-                </a>
-            </div>
         </div>
         <div class="carousel-cell"><a class="precio" href=#>
             <h3 class="titulo-prod">Bola para hamster</h3>
             <img class="image-carousel" src="{% static 'images/bolaHamster.jpg' %}" alt="x">
             <p class="valor"> CPL $8.000</p></a>
 
-            <div class="comprar-producto">
-                <a class="link-comprar" titulo-prod="Bola para hamster" valor="8000" href="#">
-                    Añadir a Carrito
-                </a>
-            </div>
         </div>
     </div>
 </div>
@@ -213,31 +184,6 @@
     <p>@ 2020 Pet World - All rights reserved.</p>
 </footer>
 
-<!--carrito-->
-<script src="js/minicart.js"></script>
-<script>
-    // configuracion inicial del carrito
-    paypal.minicart.render({
-        strings:{
-            button: 'Pagar'
-           ,buttonAlt: "Total"
-           ,subtotal: 'Total:'
-           ,empty: 'No hay productos en el carrito'
-        }
-    });
-
-    // eventos para agregar los productos al carrito
-    $('.link-comprar').click(function(e){
-       e.stopPropagation();
-        paypal.minicart.cart.add({
-        business: 'va.jamett@gmail.com', // Cuenta paypal para recibir el dinero
-        item_name: $(this).attr("titulo-prod"),
-         amount: $(this).attr("valor"),
-         currency_code: 'CLP',
-
-        });
-   });
-</script>
 
 <!--Registrar Usuario-->
 <input type="checkbox" id="show">

@@ -69,9 +69,9 @@ body{
 }
 
 /* Barra Inicio */
- 
+
 .barra_inicio{
-    display: flex;   
+    display: flex;
     font-size: 1em;
     background-color: lightcoral;
     box-shadow: 0px 1px 5px 1px #888888;
@@ -83,7 +83,7 @@ body{
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    
+
     flex-direction: var(--navrowdir);
 }
 
@@ -104,9 +104,10 @@ padding: 0;
 /* Titular */
 
 .titular{
+    padding-top: 2.5em;
     font-size: 2.5em;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     color: black;
 
@@ -115,7 +116,7 @@ padding: 0;
 /* olA*/
 .wave {
   opacity: 50%;
-  
+
 }
 
 /* Navegador */
@@ -133,7 +134,7 @@ padding: 0;
     display: flex;
     flex-direction: var(--navrowdir);
     font-size: 1.5rem;
-    background-color: cornflowerblue; 
+    background-color: cornflowerblue;
 }
 
 .barra_nav a{
@@ -141,7 +142,7 @@ padding: 0;
     display: block;
     padding: 15px;
     text-align: center;
-    transition: all .4s; 
+    transition: all .4s;
 }
 
 .barra_nav ul li{
@@ -159,7 +160,7 @@ padding: 0;
 }
 
 .barra_nav ul li:hover > ul{
-  
+
     display: block;
 }
 
@@ -199,7 +200,7 @@ padding: 0;
 }
 
 .lista-promo a{
-    color: lightcoral;  
+    color: lightcoral;
 }
 
 .image-carousel{
@@ -225,23 +226,23 @@ padding: 0;
 .flickity-enabled {
     position: relative;
   }
-  
+
   .flickity-enabled:focus { outline: none; }
-  
+
   .flickity-viewport {
     overflow: hidden;
     position: relative;
     height: 100%;
   }
-  
+
   .flickity-slider {
     position: absolute;
     width: 100%;
     height: 100%;
   }
-  
+
   /* draggable */
-  
+
   .flickity-enabled.is-draggable {
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
@@ -249,54 +250,54 @@ padding: 0;
         -ms-user-select: none;
             user-select: none;
   }
-  
+
   .flickity-enabled.is-draggable .flickity-viewport {
     cursor: move;
     cursor: -webkit-grab;
     cursor: grab;
   }
-  
+
   .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
     cursor: -webkit-grabbing;
     cursor: grabbing;
   }
-  
+
   /* ---- flickity-button ---- */
-  
+
   .flickity-button {
     position: absolute;
     background: hsla(0, 0%, 100%, 0.75);
     border: none;
     color: #333;
   }
-  
+
   .flickity-button:hover {
     background: white;
     cursor: pointer;
   }
-  
+
   .flickity-button:focus {
     outline: none;
     box-shadow: 0 0 0 5px #19F;
   }
-  
+
   .flickity-button:active {
     opacity: 0.6;
   }
-  
+
   .flickity-button:disabled {
     opacity: 0.3;
     cursor: auto;
     /* prevent disabled button from capturing pointer up event. #716 */
     pointer-events: none;
   }
-  
+
   .flickity-button-icon {
     fill: currentColor;
   }
-  
+
   /* ---- previous/next buttons ---- */
-  
+
   .flickity-prev-next-button {
     top: 50%;
     width: 44px;
@@ -305,7 +306,7 @@ padding: 0;
     /* vertically center */
     transform: translateY(-50%);
   }
-  
+
   .flickity-prev-next-button.previous { left: 10px; }
   .flickity-prev-next-button.next { right: 10px; }
   /* right to left */
@@ -317,7 +318,7 @@ padding: 0;
     right: auto;
     left: 10px;
   }
-  
+
   .flickity-prev-next-button .flickity-button-icon {
     position: absolute;
     left: 20%;
@@ -325,9 +326,9 @@ padding: 0;
     width: 60%;
     height: 60%;
   }
-  
+
   /* ---- page dots ---- */
-  
+
   .flickity-page-dots {
     width: 100%;
     bottom: -25px;
@@ -336,9 +337,9 @@ padding: 0;
     text-align: center;
     line-height: 1;
   }
-  
+
   .flickity-rtl .flickity-page-dots { direction: rtl; }
-  
+
   .flickity-page-dots .dot {
     display: inline-block;
     width: 10px;
@@ -349,34 +350,10 @@ padding: 0;
     opacity: 0.25;
     cursor: pointer;
   }
-  
+
   .flickity-page-dots .dot.is-selected {
     opacity: 1;
   }
-
-  /*ventana carrito compra*/
-  .ventana-carrito{
-    background: grey;
-    width: 35%;
-    min-height: 250px;
-    position: absolute;
-    left: 60%;
-    display:none;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-#titulo-carrito{
-  padding: 10px;
-  float: left;
-  line-height: 1.1;
-  font-family: inherit;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-#link-cerrar{
-  float:right;
-  margin: 5px;
-}
 
 /*Galeria*/
 
@@ -405,14 +382,14 @@ padding: 0;
 }
 
 .tz-gallery {
-    
+
   padding: 40px;
   width: 100%;
   height: 100%;
 }
 
 .tz-gallery .lightbox img {
-    
+
   width: 100%;
   margin-bottom: 30px;
   transition: 0.2s ease-in-out;
@@ -461,7 +438,7 @@ footer{
 
 #show:checked + #espacio-oscuro + form{
   display: block;
-} 
+}
 
 #show{
   display: none;
@@ -489,7 +466,7 @@ footer{
   margin: 180px auto;
   padding: 30px;
   box-shadow: 9px 10px 2px rgba(0,0,0,0.125);
-  border-radius: 20px;  
+  border-radius: 20px;
   transform: translate(-50%, -50%);
 }
 
