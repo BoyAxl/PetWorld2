@@ -4,9 +4,11 @@ from .forms import AnimalForm, ProductoForm
 from .models import Animal, Producto
 
 # Create your views here.
-def Home(request):
+def home(request):
     return render(request,'index.html') #funcion que renderiza, pinta un template con la información que deseamos
 
+def acerca_de_nosotros(request):
+    return render (request,'acerca_de_nosotros.html')
 ###################  CRUDS Animales ####################
 # que nos permite crear un objeto del tipo Animal
 def crearAnimal(request):
@@ -39,7 +41,7 @@ def editarAnimal(request,id):
             return redirect('index') # luego nos redirecciona al index
     except ObjectDoesNotExist as e:
         error = e
-    return render(request,'producto/crear_animal.html',{'animal_form':animal_form, 'error':error})    
+    return render(request,'producto/crear_animal.html',{'animal_form':animal_form, 'error':error})
 
 def eliminarAnimal(request,id):
     animal = Animal.objects.get(id = id)
@@ -60,4 +62,3 @@ def crearProducto(request):
     else:
         producto_form = ProductoForm()
     return render(request,'producto/crear_producto.html',{'producto_form':producto_form})
-
