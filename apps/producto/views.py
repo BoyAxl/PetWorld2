@@ -9,6 +9,11 @@ def home(request):
 
 def acerca_de_nosotros(request):
     return render (request,'acerca_de_nosotros.html')
+
+def productos(request):
+    productos = Producto.objects.all()
+    print(productos)
+    return render (request,'productos.html',{'productos':productos})
 ###################  CRUDS Animales ####################
 # que nos permite crear un objeto del tipo Animal
 def crearAnimal(request):

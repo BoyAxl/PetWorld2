@@ -23,6 +23,7 @@ class Producto(models.Model):
     peso = models.CharField('Peso', max_length = 10, blank = True, null = True)
     valor = models.IntegerField('Valor', blank = False, null = False)
     animal_id = models.ManyToManyField(Animal) #Relación Muchos a Muchos (pueden haber varios productos correspondientes a varios tipos de animales)
+    imagen = models.ImageField('Imagen', blank = False, null = False)
     stock = models.BigIntegerField('Stock', blank = False, null = False)
     #falta añadir un campo de imagen
 
@@ -32,7 +33,7 @@ class Producto(models.Model):
         ordering = ['nombre']
 
     def __str__(self):
-        return self.nombre
+        return self.nombre ##por defecto muestra el nombre
 
 class Categoria(models.Model):
     id = models.AutoField(primary_key = True)

@@ -38,7 +38,7 @@
 <div class="barra_nav">
 
     <ul>
-        <li><a href="#">Farmacia</a>
+        <li><a href="{% url 'petworld:productos' %}">Farmacia</a>
             <ul class="submenu"><!--submenu-->
                 <li><a href="#">Pipetas</a></li>
                 <li><a href="#">Vitaminas</a></li>
@@ -73,7 +73,7 @@
         <li class="red"><a href=#>
             <label for="show" id="registrarc">
             <img class="icono_nav" src="{% static 'images/user.png' %}" alt="X"></label></a></li>
-        <li class="red"><a href="javascript:paypal.minicart.view.show()" >
+        <li class="red"><a href="#" >
             <img class="icono_nav" src="{% static 'images/carrito.png' %}" alt="X"></a></li>
         <li class="red"><a href="http://www.facebook.com/" target="_blank">
             <img class="icono_nav" src="{% static 'images/facebook.png' %}" alt="X"></a></li>
@@ -81,16 +81,6 @@
             <img class="icono_nav" src="{% static 'images/instagram.png' %}" alt="X"></a></li>
     </ul>
 </div>{% block body %}
-    <!--Ventana Carrito Compra-->
-    <div class="ventana-carrito" id="vent-carr">
-
-        <div id="titulo-carrito">Carrito de Compras</div>
-        <a id="link-cerrar" href="javascript:cerrar()">
-
-        </a>
-        <ul id="carrito" class="list-group"></ul>
-    </div>
-
 <div class="lista-promo">
     <h1> Aprovecha nuestras promociones registrandote</h1>
 

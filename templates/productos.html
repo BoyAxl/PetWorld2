@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Nuestros Productos{% endblock title %}
+
+{% block body %}
+{% if productos %}
+  {% for producto in productos %}
+   <h2>
+     {{ producto.nombre }}: ${{producto.valor}}
+   </h2>
+   <img src='{{ producto.imagen.url }}' class="image-carousel" />
+  {% endfor %}
+{% else %}
+   <h1>NO HAY NIUN PRODUCTO!</h1>
+{% endif %}
+{% endblock body %}
