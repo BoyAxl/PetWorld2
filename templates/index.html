@@ -18,7 +18,7 @@
 <nav class="barra_inicio">
 
     <ul>
-        <li id="navLogo"><img id="logopatita" src="{% static 'images/petworld-black.png' %}" alt="X"></li>
+        <li id="navLogo"><a href="{% url 'petworld:index' %}"><img id="logopatita" src="{% static 'images/petworld-black.png' %}" alt="X"></a></li>
         <li><a href="{% url 'petworld:index' %}">Inicio</a></li>
         <li><a href="{% url 'petworld:acerca_de_nosotros' %}">Acerca de Nosotros</a></li>
         <li><a href="#">Servicios</a></li>
@@ -38,19 +38,19 @@
 <div class="barra_nav">
 
     <ul>
-        <li><a href="{% url 'petworld:productos' %}">Farmacia</a>
+        <li><a href="#">Farmacia</a>
             <ul class="submenu"><!--submenu-->
                 <li><a href="#">Pipetas</a></li>
                 <li><a href="#">Vitaminas</a></li>
             </ul>
         </li>
-        <li><a href="#">Perros</a>
+        <li><a href="{% url 'petworld:productos_perro' %}">Perros</a>
             <ul class="submenu"><!--submenu-->
                 <li><a href="#">Alimentos</a></li>
                 <li><a href="#">Juguetes</a></li>
             </ul>
         </li>
-        <li><a href="#">Gatos</a>
+        <li><a href="{% url 'petworld:productos_gato' %}">Gatos</a>
             <ul class="submenu"><!--submenu-->
                 <li><a href="#">Alimentos</a></li>
                 <li><a href="#">juguetes</a></li>
@@ -87,44 +87,27 @@
     <div class="main-carousel" data-flickity='{"draggable": false, "wrapAround": true,
         "autoPlay": true, "cellAlign": "center", "watchCSS": false}'>
 
-        <div class="carousel-cell"><a class="precio" href=#>
-            <h3 class="titulo-prod">Comida de Gato 15Kg</h3>
-            <img class="image-carousel" src="{% static 'images/comidaGato.jpg' %}" alt="x">
-            <p class="valor"> CLP $15.000</p></a>
+        {% if productos %}
+          {% for producto in productos %}
+          <div class="carousel-cell"><a class="precio" href=#>
+              <h3 class="titulo-prod">{{ producto.nombre }}</h3>
+              <img class="image-carousel" src='{{ producto.imagen.url }}' alt="x">
+              <p class="precio">CLP ${{ producto.valor }}</p></a>
+          </div>
+          {% endfor %}
+        {% else %}
+           <h1>NO HAY PRODUCTOS!</h1>
+        {% endif %}
 
-        </div>
-        <div class="carousel-cell"><a class="precio" href=#>
-            <h3 class="titulo-prod">Comida de Perro 15Kg</h3>
-            <img class="image-carousel" src="{%static 'images/comidaPerro.jpg' %}" alt="x">
-            <p class="valor"> CLP $13.000</p></a>
 
-        </div>
-        <div class="carousel-cell"><a class="precio" href=#>
-            <h3 class="titulo-prod">Pipeta perros de 4kg/10kg</h3>
-            <img class="image-carousel" src="{% static 'images/pipetaPerro.jpeg' %}" alt="x">
-            <p class="valor"> CLP $10.000</p></a>
-
-        </div>
-        <div class="carousel-cell"><a class="precio" href=#>
-            <h3 class="titulo-prod">Arbol para gatos</h3>
-            <img class="image-carousel" src="{% static 'images/rascadorGato.jpg' %}" alt="x">
-            <p class="valor"> CPL $18.000</p></a>
-
-        </div>
-        <div class="carousel-cell"><a class="precio" href=#>
-            <h3 class="titulo-prod">Bola para hamster</h3>
-            <img class="image-carousel" src="{% static 'images/bolaHamster.jpg' %}" alt="x">
-            <p class="valor"> CPL $8.000</p></a>
-
-        </div>
     </div>
 </div>
 <!--galeria de imagenes-->
 <div class="container gallery-container">
 
-    <h1>Galeria de la tienda</h1>
+    <h1>Galería de nuestros Clientes</h1>
 
-    <p class="page-description text-center">¡Adopción, farmacia y más!</p>
+    <p class="page-description text-center">¡Envíanos la tuya!</p>
 
     <div class="tz-gallery">
 
@@ -164,11 +147,13 @@
         </div>
     </div>
 </div>
+<!--termino de galeria-->
 
+<!--Scripts-->
+<script src="{% static 'js/flickity-carousel.js' %}"></script><!--archivo de javascript para activar el carousel-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>baguetteBox.run('.tz-gallery');</script>
-<!--termino de galeria-->
-<script src="{% static 'js/flickity-carousel.js' %}"></script><!--archivo de javascript para activar el carousel-->
+<!--Fin de los Scripts-->
 
 <footer>
     <p>@ 2020 Pet World - All rights reserved.</p>

@@ -209,7 +209,8 @@ padding: 0;
 }
 
 .precio{
-    font-size: 1.5em;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 .carousel-cell {
     background-color: white;

@@ -7,6 +7,6 @@
     {% csrf_token %}
     <h2>¿Desea eliminar el registro {{ animal.nombre }}</h2>
         <button type = "submit">Eliminar</button>
-        <a href="{% url 'producto:listar_animal' %}">Cancelar</a>
+        <button><a href="{% url 'petworld:listar_animal' %}">Cancelar</a></button>
 </form>
 {% endblock body %}
