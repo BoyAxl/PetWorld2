@@ -86,3 +86,32 @@ def crearProducto(request):
     else:
         producto_form = ProductoForm()
     return render(request,'producto/crear_producto.html',{'producto_form':producto_form})
+
+# que nos permite listar los objetos de tipo Producto.
+def listarProducto(request):
+    productos = Producto.objects.all()
+    return render(request,'producto/listar_productos.html',{'productos':productos})
+
+# que nos permite editar un objeto del tipo Animal
+def editarProducto(request,id):
+    producto_form = None
+    error = None
+    try:
+        producto = Producto.objects.get(id = id)
+        if request.method == 'GET': #preguntamos si se está trayendo la información para renderizarla y editarla. Si el metodo es Get entonces
+            producto_form = ProductoForm(instance = producto) #formulario será llenado con la informacion del objeto encontrado
+        else: #si no obtuvimos un GET, siginifica que procederemos a Guardar la información
+            producto_form = ProductoForm(request.POST, instance = producto)
+            if producto_form.is_valid(): # si es valido el formulario
+                producto_form.save() # se guarda en la base de datos
+            return redirect('petworld:index') # luego nos redirecciona al index
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request,'producto/crear_producto.html',{'producto_form':producto_form, 'error':error})
+
+def eliminarProducto(request,id):
+    producto = Producto.objects.get(id = id)
+    if request.method == 'POST':
+        producto.delete()
+        return redirect('petworld:listar_productos')
+    return render(request,'producto/eliminar_producto.html',{'producto':producto})

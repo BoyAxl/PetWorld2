@@ -14,6 +14,9 @@ urlpatterns = [
     path('editar_animal/<int:id>',editarAnimal, name = 'editar_animal'), #le estamos pasando el id
     path('eliminar_animal/<int:id>',eliminarAnimal, name = 'eliminar_animal'),
     #### PATHS DE CURDS DE PRODUCTOS ######
-    path('crear_producto/',crearProducto, name = 'crear_producto')
+    path('crear_producto/',crearProducto, name = 'crear_producto'),
+    path('listar_productos/',listarProducto, name = 'listar_productos'),
+    path('editar_producto/<int:id>',editarProducto, name = 'editar_producto'),
+    path('eliminar_producto/<int:id>',eliminarProducto, name = 'eliminar_producto'),
 
 ]

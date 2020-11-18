@@ -7,7 +7,7 @@
 {% block body %}
 
     {% if animales %}
-    <table>
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -21,8 +21,8 @@
                 <td>{{ animal.id }}</td>
                 <td>{{ animal.nombre }}</td>
                 <td>
-                    <a href="{% url 'petworld:editar_animal' animal.id %}">Editar</a>
-                    <a href="{% url 'petworld:eliminar_animal' animal.id %}">Eliminar</a>
+                    <a class="btn" href="{% url 'petworld:editar_animal' animal.id %}">Editar</a>
+                    <a class="btn" href="{% url 'petworld:eliminar_animal' animal.id %}">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}
