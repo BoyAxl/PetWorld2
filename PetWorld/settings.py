@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.producto',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Configuracion de ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar' : 'full',
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

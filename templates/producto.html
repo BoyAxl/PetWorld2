@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}PetWorld: {{ producto.nombre }}{% endblock title %}
+
+{% block body %}
+
+<h1>{{ producto.nombre }}</h1>
+<img src='{{ producto.imagen.url }}' class="image-carousel" />
+<h2>${{ producto.valor }}</h2>
+<p>{{ producto.descripcion | safe }}</p>
+<button type = "submit">Agregar al Carrito</button>
+
+{% endblock body %}

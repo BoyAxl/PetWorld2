@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import AnimalForm, ProductoForm
 from .models import Animal, Producto
+from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
@@ -13,15 +15,24 @@ def acerca_de_nosotros(request):
 
 def productos(request):
     productos = Producto.objects.all()
+
+    paginator = Paginator(productos,10)  # cuantos productos se muestran por página
+    page = request.GET.get('page') #guarda la pagina actual
+    productos= paginator.get_page(page) #le enviamos al template los productos de la pagina page
     return render (request,'productos.html',{'productos':productos})
 
 def productos_perro(request):
-    productos = Producto.objects.filter(animal_id = Animal.objects.get(nombre = 'Perro'))
+    productos = Producto.objects.filter(animal_id = Animal.objects.get(nombre__iexact = 'Perro'))
     return render (request,'productos.html',{'productos':productos})
 
 def productos_gato(request):
-    productos = Producto.objects.filter(animal_id = Animal.objects.get(nombre = 'Gato'))
+    productos = Producto.objects.filter(animal_id = Animal.objects.get(nombre__iexact = 'Gato'))
     return render (request,'productos.html',{'productos':productos})
+
+def detalleProducto(request,slug):
+    producto = get_object_or_404(Producto,slug = slug)
+    return render(request,'producto.html',{'producto':producto})
+
 ###################  CRUDS Animales ####################
 # que nos permite crear un objeto del tipo Animal
 def crearAnimal(request):
@@ -30,7 +41,7 @@ def crearAnimal(request):
         if animal_form.is_valid():
             animal_form.save()
             return redirect('petworld:index')
-        else:
+    else:
         animal_form = AnimalForm()
     return render(request,'producto/crear_animal.html',{'animal_form':animal_form})
 

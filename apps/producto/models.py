@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 ##### Aquí se crean las Clases de la Base de Datos #####
@@ -19,7 +20,8 @@ class Animal(models.Model):
 class Producto(models.Model):
     id = models.AutoField(primary_key = True)
     nombre = models.CharField('Nombre del Producto', max_length = 50, blank = False, null = False)
-    descripcion = models.CharField('Descripción', max_length = 200, blank = False, null = False)
+    slug = models.CharField('Slug', max_length = 100, blank = False, null = False)
+    descripcion = RichTextField('Descripcion', blank = False, null = False)
     peso = models.CharField('Peso', max_length = 10, blank = True, null = True)
     valor = models.IntegerField('Valor', blank = False, null = False)
     animal_id = models.ManyToManyField(Animal) #Relación Muchos a Muchos (pueden haber varios productos correspondientes a varios tipos de animales)

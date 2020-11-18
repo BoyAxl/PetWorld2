@@ -3,14 +3,37 @@
 {% block title %}Nuestros Productos{% endblock title %}
 
 {% block body %}
-{% if productos %}
-  {% for producto in productos %}
-   <h2>
-     {{ producto.nombre }}: ${{producto.valor}}
-   </h2>
-   <img src='{{ producto.imagen.url }}' class="image-carousel" />
-  {% endfor %}
-{% else %}
-   <h1>NO HAY NIUN PRODUCTO!</h1>
-{% endif %}
+  {% if productos %}
+    {% for producto in productos %}
+     <h2>
+       {{ producto.nombre }}: ${{producto.valor}}
+     </h2>
+     <a href="{% url 'petworld:detalleProducto' producto.slug %}"><img src='{{ producto.imagen.url }}' class="image-carousel" /></a>
+    {% endfor %}
+  {% else %}
+     <h1>NO HAY NIUN PRODUCTO!</h1>
+  {% endif %}
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6  float-left">
+        {% if productos.has_previous %}
+          <div class="clearfix">
+            <a href="?page={{ productos.previous_page_number }}" class="btn btn-primary float-left">Anterior</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 float-right">
+        {% if productos.has_next %}
+          <div class="clearfix">
+            <a href="?page={{ productos.next_page_number }}" class="btn btn-primary float-right">Siguiente</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
 {% endblock body %}

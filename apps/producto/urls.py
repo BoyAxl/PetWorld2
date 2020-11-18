@@ -7,6 +7,7 @@ urlpatterns = [
     path('productos/',productos, name ='productos'),
     path('productos/perro',productos_perro, name = 'productos_perro'),
     path('productos/gato',productos_gato, name = 'productos_gato'),
+    path('producto/<slug:slug>/',detalleProducto, name = 'detalleProducto'),
     #### PATHS DE CRUDS ANIMALES ######
     path('crear_animal/',crearAnimal, name = 'crear_animal'),
     path('listar_animal/',listarAnimal, name = 'listar_animal'),
