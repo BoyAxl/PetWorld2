@@ -4,11 +4,19 @@ from .forms import AnimalForm, ProductoForm
 from .models import Animal, Producto
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
+from django.views.generic import TemplateView, ListView, UpdateView, CreateView
+from django.urls import reverse_lazy
 
 # Create your views here.
-def home(request):
-    productos = Producto.objects.all()
-    return render(request,'index.html',{'productos':productos}) #funcion que renderiza, pinta un template con la información que deseamos
+#def home(request):
+#    productos = Producto.objects.all()
+#    return render(request,'index.html',{'productos':productos})
+
+class home(TemplateView):  #Esta es una Vista basada en una Clase <3
+    template_name = 'index.html'
+    def get(self,request,*args,**kwargs):
+        productos = Producto.objects.all()
+        return render (request,self.template_name,{'productos':productos}) #funcion que renderiza, pinta un template con la información que deseamos
 
 def acerca_de_nosotros(request):
     return render (request,'acerca_de_nosotros.html')
@@ -77,37 +85,58 @@ def eliminarAnimal(request,id):
 
 ###################  CRUDS Productos ####################
 # que nos permite crear un objeto del tipo Producto
-def crearProducto(request):
-    if request.method == 'POST':
-        producto_form = ProductoForm(request.POST, request.FILES)
-        if producto_form.is_valid():
-            producto_form.save()
-            return redirect('petworld:index')
-    else:
-        producto_form = ProductoForm()
-    return render(request,'producto/crear_producto.html',{'producto_form':producto_form})
+#def crearProducto(request):
+#    if request.method == 'POST':
+#        producto_form = ProductoForm(request.POST, request.FILES)
+#        if producto_form.is_valid():
+#            producto_form.save()
+#            return redirect('petworld:index')
+#    else:
+#        producto_form = ProductoForm()
+#    return render(request,'producto/crear_producto.html',{'producto_form':producto_form})
+
+# que nos permite crear un objeto del tipo Producto
+class crearProducto(CreateView):
+    model = Producto
+    template_name = 'producto/crear_producto.html'
+    form_class = ProductoForm
+    succes_url = reverse_lazy('petworld:listar_productos')
 
 # que nos permite listar los objetos de tipo Producto.
-def listarProducto(request):
-    productos = Producto.objects.all()
-    return render(request,'producto/listar_productos.html',{'productos':productos})
+#def listarProducto(request):
+#    productos = Producto.objects.all()
+#    return render(request,'producto/listar_productos.html',{'productos':productos})
 
-# que nos permite editar un objeto del tipo Animal
-def editarProducto(request,id):
-    producto_form = None
-    error = None
-    try:
-        producto = Producto.objects.get(id = id)
-        if request.method == 'GET': #preguntamos si se está trayendo la información para renderizarla y editarla. Si el metodo es Get entonces
-            producto_form = ProductoForm(instance = producto) #formulario será llenado con la informacion del objeto encontrado
-        else: #si no obtuvimos un GET, siginifica que procederemos a Guardar la información
-            producto_form = ProductoForm(request.POST, instance = producto)
-            if producto_form.is_valid(): # si es valido el formulario
-                producto_form.save() # se guarda en la base de datos
-            return redirect('petworld:index') # luego nos redirecciona al index
-    except ObjectDoesNotExist as e:
-        error = e
-    return render(request,'producto/crear_producto.html',{'producto_form':producto_form, 'error':error})
+#que nos permite listar los objetos de tipo Producto.
+class listarProductos(ListView):
+    model = Producto
+    template_name = 'producto/listar_productos.html'
+    context_object_name = 'productos'
+    queryset = Producto.objects.all()
+
+# que nos permite editar un objeto del tipo Producto
+#def editarProducto(request,id):
+#    producto_form = None
+#    error = None
+#    try:
+#        producto = Producto.objects.get(id = id)
+#        if request.method == 'GET': #preguntamos si se está trayendo la información para renderizarla y editarla. Si el metodo es Get entonces
+#            producto_form = ProductoForm(instance = producto) #formulario será llenado con la informacion del objeto encontrado
+#        else: #si no obtuvimos un GET, siginifica que procederemos a Guardar la información
+#            producto_form = ProductoForm(request.POST, instance = producto)
+#            if producto_form.is_valid(): # si es valido el formulario
+#                producto_form.save() # se guarda en la base de datos
+#            return redirect('petworld:index') # luego nos redirecciona al index
+#    except ObjectDoesNotExist as e:
+#        error = e
+#    return render(request,'producto/crear_producto.html',{'producto_form':producto_form, 'error':error})
+
+# que nos permite editar un objeto del tipo Producto
+class editarProducto(UpdateView):
+    model = Producto
+    template_name = 'producto/crear_producto.html'
+    form_class = ProductoForm
+    succes_url = reverse_lazy('petworld:listar_productos') #nos redirecciona
 
 def eliminarProducto(request,id):
     producto = Producto.objects.get(id = id)

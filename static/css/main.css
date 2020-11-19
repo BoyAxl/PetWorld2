@@ -688,3 +688,24 @@ footer{
     position:relative;
     top:0;
 }
+
+/*Contenido*/
+.contenido{
+  background-color: white;
+  text-align: center;
+}
+
+.formulario{
+  text-align: left;
+  margin: 5em;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  display:inline-block;
+  background-color: lightblue;
+border-radius: 5em;
+}
+
+.formulario h1{
+  text-align: center;
+  padding: 2em;
+}

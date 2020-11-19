@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include #permite incluir urls de aplicaciones del proyecto
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('apps.producto.urls','petworld'))),
