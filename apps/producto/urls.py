@@ -21,6 +21,6 @@ urlpatterns = [
     path('listar_productos/',listarProductos.as_view(), name = 'listar_productos'),
     #path('editar_producto/<int:id>',editarProducto, name = 'editar_producto'),
     path('editar_producto/<int:pk>',editarProducto.as_view(), name = 'editar_producto'),
-    path('eliminar_producto/<int:id>',eliminarProducto, name = 'eliminar_producto'),
+    path('eliminar_producto/<int:pk>',eliminarProducto.as_view(), name = 'eliminar_producto'),
 
 ]

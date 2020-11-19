@@ -4,8 +4,9 @@ from .forms import AnimalForm, ProductoForm
 from .models import Animal, Producto
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView
+from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
+
 
 # Create your views here.
 #def home(request):
@@ -100,7 +101,7 @@ class crearProducto(CreateView):
     model = Producto
     template_name = 'producto/crear_producto.html'
     form_class = ProductoForm
-    succes_url = reverse_lazy('petworld:listar_productos')
+
 
 # que nos permite listar los objetos de tipo Producto.
 #def listarProducto(request):
@@ -136,11 +137,14 @@ class editarProducto(UpdateView):
     model = Producto
     template_name = 'producto/crear_producto.html'
     form_class = ProductoForm
-    succes_url = reverse_lazy('petworld:listar_productos') #nos redirecciona
 
-def eliminarProducto(request,id):
-    producto = Producto.objects.get(id = id)
-    if request.method == 'POST':
-        producto.delete()
-        return redirect('petworld:listar_productos')
-    return render(request,'producto/eliminar_producto.html',{'producto':producto})
+#def eliminarProducto(request,id):
+#    producto = Producto.objects.get(id = id)
+#    if request.method == 'POST':
+#        producto.delete()
+#        return redirect('petworld:listar_productos')
+#    return render(request,'producto/eliminar_producto.html',{'producto':producto})
+
+class eliminarProducto(DeleteView):
+    model = Producto
+    success_url = reverse_lazy('petworld:listar_productos')

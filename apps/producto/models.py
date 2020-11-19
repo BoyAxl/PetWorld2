@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
+
 
 
 ##### Aquí se crean las Clases de la Base de Datos #####
@@ -36,3 +38,6 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre ##por defecto muestra el nombre
+
+    def get_absolute_url(self):
+        return reverse('petworld:listar_productos')
