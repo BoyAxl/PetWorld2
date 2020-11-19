@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Inicio de Sesión{% endblock title %}
+{% block body %}
+  <div class ="contenido">
+      <form class="formulario" method="POST">
+        {% csrf_token %}
+        <div class="login-div">
+          {{form.username}}
+        </div>
+        <div class="login-div">
+          {{form.password}}
+        </div>
+        <div class="login-div">
+          <button type="submit" class="btn-login">Iniciar Sesión</button>
+        </div>
+      </form>
+  </div>
+{% endblock body %}

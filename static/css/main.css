@@ -689,6 +689,21 @@ footer{
     top:0;
 }
 
+.btn-login{
+    background:#fac75a;
+    color:#fff;
+    border: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 700;
+    padding: 15px 90px;
+    text-decoration: none;
+    display:inline-block;
+    outline:none;
+    top:0;
+}
+
 /*Contenido*/
 .contenido{
   background-color: white;
@@ -698,14 +713,27 @@ footer{
 .formulario{
   text-align: left;
   margin: 5em;
-  padding: 30px 50px;
+  padding: 50px 70px;
   box-sizing: border-box;
   display:inline-block;
   background-color: lightblue;
-border-radius: 5em;
+  border-radius: 5em;
 }
 
 .formulario h1{
+  color: white;
+  font-size: 2em;
   text-align: center;
-  padding: 2em;
+  padding: 1em;
+}
+
+/*Login*/
+.login-input{
+  border-color: none;
+  font-size: 2em;
+}
+
+.login-div{
+  text-align: center;
+  padding: 1em;
 }

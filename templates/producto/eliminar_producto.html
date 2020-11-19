@@ -3,10 +3,11 @@
     Eliminar {{ producto.nombre }}
 {% endblock title %}
 {% block body %}
-<form method="POST">
+  <form method="post">
     {% csrf_token %}
-    <h2>¿Desea eliminar el registro {{ producto.nombre }}</h2>
-        <button type = "submit">Eliminar</button>
-        <button><a href="{% url 'petworld:listar_productos' %}">Cancelar</a></button>
-</form>
+    <p><strong>¿Desea eliminar el registro {{ object }}?</strong></p>
+    <button type="submit" class=btn>Confirmar</button>
+    {% block registro %}
+    {% endblock registro%}
+  </form>
 {% endblock body %}

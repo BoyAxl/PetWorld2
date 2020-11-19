@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from .views import *
 
 urlpatterns = [
@@ -10,17 +11,17 @@ urlpatterns = [
     path('productos/gato',productos_gato, name = 'productos_gato'),
     path('producto/<slug:slug>/',detalleProducto, name = 'detalleProducto'),
     #### PATHS DE CRUDS ANIMALES ######
-    path('crear_animal/',crearAnimal, name = 'crear_animal'),
-    path('listar_animal/',listarAnimal, name = 'listar_animal'),
-    path('editar_animal/<int:id>',editarAnimal, name = 'editar_animal'), #le estamos pasando el id
-    path('eliminar_animal/<int:id>',eliminarAnimal, name = 'eliminar_animal'),
+    path('crear_animal/',login_required(crearAnimal), name = 'crear_animal'),
+    path('listar_animal/',login_required(listarAnimal), name = 'listar_animal'),
+    path('editar_animal/<int:id>',login_required(editarAnimal), name = 'editar_animal'), #le estamos pasando el id
+    path('eliminar_animal/<int:id>',login_required(eliminarAnimal), name = 'eliminar_animal'),
     #### PATHS DE CURDS DE PRODUCTOS ######
     #path('crear_producto/',crearProducto, name = 'crear_producto'),
-    path('crear_producto/',crearProducto.as_view(), name = 'crear_producto'),
+    path('crear_producto/',login_required(crearProducto.as_view()), name = 'crear_producto'),
     #path('listar_productos/',listarProductos, name = 'listar_productos'),
-    path('listar_productos/',listarProductos.as_view(), name = 'listar_productos'),
+    path('listar_productos/',login_required(listarProductos.as_view()), name = 'listar_productos'),
     #path('editar_producto/<int:id>',editarProducto, name = 'editar_producto'),
-    path('editar_producto/<int:pk>',editarProducto.as_view(), name = 'editar_producto'),
-    path('eliminar_producto/<int:pk>',eliminarProducto.as_view(), name = 'eliminar_producto'),
+    path('editar_producto/<int:pk>',login_required(editarProducto.as_view()), name = 'editar_producto'),
+    path('eliminar_producto/<int:pk>',login_required(eliminarProducto.as_view()), name = 'eliminar_producto'),
 
 ]

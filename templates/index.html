@@ -29,7 +29,7 @@
 
 <nav class="titular">
 
-    <h1>Realiza compras seguras</h1>
+    <h1>Bienvenido {{user.username}} !</h1>
     <h2>No te pierdas nuestros productos para tus mascotas</h2>
     <div class="wave" style="height: 150px; " ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 516.08,41.94 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #08f;"></path></svg>
     </div><!--wave- ola para adornar-->
@@ -70,8 +70,8 @@
             </ul>
         </li>
         <li></li>
-        <li class="red"><a href=#>
-            <label for="show" id="registrarc">
+        <li class="red"><a href={% url 'login' %}>
+            <!--<label for="show" id="registrarc">-->
             <img class="icono_nav" src="{% static 'images/user.png' %}" alt="X"></label></a></li>
         <li class="red"><a href="#" >
             <img class="icono_nav" src="{% static 'images/carrito.png' %}" alt="X"></a></li>
@@ -114,34 +114,34 @@
         <div class="row">
 
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="images/jugueteperro.jpg">
-                    <img src="images/jugueteperro.jpg" alt="Juguetes para perros">
+                <a class="lightbox" href="{% static 'images/jugueteperro.jpg' %}">
+                    <img src="{% static 'images/jugueteperro.jpg' %}" alt="Juguetes para perros">
                 </a>
             </div>
 
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="images/farmacia.jpg">
-                    <img src="images/farmacia.jpg" alt="farmacia">
+                <a class="lightbox" href="{% static 'images/farmacia.jpg' %}">
+                    <img src="{% static 'images/farmacia.jpg' %}" alt="farmacia">
                 </a>
             </div>
             <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="images/accesorios.jpg">
-                    <img src="images/accesorios.jpg" alt="accesorios">
+                <a class="lightbox" href="{% static 'images/accesorios.jpg' %}">
+                    <img src="{% static 'images/accesorios.jpg' %}" alt="accesorios">
                 </a>
             </div>
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="images/alimentos.jpg">
-                    <img src="images/alimentos.jpg" alt="Alimentos">
+                <a class="lightbox" href="{% static 'images/alimentos.jpg' %}">
+                    <img src="{% static 'images/alimentos.jpg' %}" alt="Alimentos">
                 </a>
             </div>
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="images/jarabe.jpg">
-                    <img src="images/jarabe.jpg" alt="jarabe">
+                <a class="lightbox" href="{% static 'images/jarabe.jpg' %}">
+                    <img src="{% static 'images/jarabe.jpg' %}" alt="jarabe">
                 </a>
             </div>
             <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="images/cachorros.jpg">
-                    <img src="images/cachorros.jpg" alt="cachorros">
+                <a class="lightbox" href="{% static 'images/cachorros.jpg' %}">
+                    <img src="{% static 'images/cachorros.jpg' %}" alt="cachorros">
                 </a>
             </div>
         </div>
@@ -154,11 +154,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>baguetteBox.run('.tz-gallery');</script>
 <!--Fin de los Scripts-->
-
+{% endblock body %}
 <footer>
     <p>@ 2020 Pet World - All rights reserved.</p>
 </footer>
-{% endblock body %}
+
 
 {% block registro %}
 <!--Registrar Usuario-->
