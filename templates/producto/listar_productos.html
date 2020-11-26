@@ -5,35 +5,36 @@
 {% endblock title %}
 
 {% block body %}
-
-    {% if productos %}
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Valor</th>
-                <th>Stock</th>
-                <th>Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in productos %}
-            <tr>
-                <td>{{ producto.id }}</td>
-                <td>{{ producto.nombre }}</td>
-                <td>${{ producto.valor }}</td>
-                <td>{{ producto.stock }}</td>
-                <td>
-                    <a class="btn" href="{% url 'petworld:editar_producto' producto.id %}">Editar</a>
-                    <a class="btn" href="{% url 'petworld:eliminar_producto' producto.id %}">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="admin-listas">
+  <div><a class="btn" href="{% url 'petworld:crear_producto'%}">Crear Producto</a></div>
+      {% if productos %}
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Valor</th>
+                  <th>Stock</th>
+                  <th>Opciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for producto in productos %}
+              <tr>
+                  <td>{{ producto.id }}</td>
+                  <td>{{ producto.nombre }}</td>
+                  <td>${{ producto.valor }}</td>
+                  <td>{{ producto.stock }}</td>
+                  <td>
+                      <a class="btn" href="{% url 'petworld:editar_producto' producto.id %}">Editar</a>
+                      <a class="btn" href="{% url 'petworld:eliminar_producto' producto.id %}">Eliminar</a>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
     {% else %}
         <h1> No existen productos registrados </h1>
     {% endif %}
-
+  </div>
     {% endblock body %}

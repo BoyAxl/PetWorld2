@@ -5,7 +5,8 @@
 {% endblock title %}
 
 {% block body %}
-
+<div class="admin-listas">
+    <div><a class="btn" href="{% url 'petworld:crear_animal'%}">Crear Animal</a></div>
     {% if animales %}
     <table class="styled-table">
         <thead>
@@ -31,5 +32,5 @@
     {% else %}
         <h1> No existen animales registrados </h1>
     {% endif %}
-
+  </div>
     {% endblock body %}

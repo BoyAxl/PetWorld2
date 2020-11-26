@@ -22,10 +22,10 @@ from apps.usuario.views import Login, logoutUsuario
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('apps.producto.urls','petworld'))),
+    path('usuarios/',include(('apps.usuario.urls','usuarios'))),
     path('accounts/login/',Login.as_view(), name = 'login'),
     path('logout/',login_required(logoutUsuario),name = 'logout')
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#holi

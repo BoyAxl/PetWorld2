@@ -18,6 +18,9 @@ class home(TemplateView):  #Esta es una Vista basada en una Clase <3
 def acerca_de_nosotros(request):
     return render (request,'acerca_de_nosotros.html')
 
+def administracion(request):
+    return render (request,'administracion.html')
+
 def productos(request):
     productos = Producto.objects.all()
 

@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block title %}Administración{% endblock title %}
+{% block body %}
+<div class="menu-admin">
+  <div><a class="btn" href="{% url 'usuarios:listar_usuarios'%}">Usuarios</a></div>
+  <div><a class="btn" href="{% url 'petworld:listar_productos'%}">Productos</a></div>
+</div>
+{%  endblock %}
+asd

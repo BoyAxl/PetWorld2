@@ -6,7 +6,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, logout
 from django.http import HttpResponseRedirect
-from .forms import FormularioLogin
+from django.views.generic import CreateView,ListView,UpdateView,DeleteView
+from apps.usuario.models import Usuario
+from .forms import FormularioLogin, FormularioUsuario
 # Create your views here.
 class Login(FormView):
     template_name = 'login.html'
@@ -28,3 +30,16 @@ class Login(FormView):
 def logoutUsuario(request):
     logout(request)
     return HttpResponseRedirect('/accounts/login/')
+
+class ListarUsuarios(ListView):
+    model = Usuario
+    template_name = 'usuarios/listar_usuarios.html'
+
+    def get_queryset(self):
+        return self.model.objects.filter(usuario_activo=True)
+
+class CrearUsuario(CreateView):
+    model = Usuario
+    form_class = FormularioUsuario
+    template_name = 'usuarios/crear_usuario.html'
+    success_url = reverse_lazy('usuarios:listar_usuarios')

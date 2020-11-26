@@ -643,6 +643,15 @@ footer{
 /*sepa más de nosotres */
 
 /* Tablas */
+.admin-listas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.admin-listas a{
+  
+}
 .styled-table {
     align-self: center;
     border-collapse: collapse;
@@ -736,4 +745,21 @@ footer{
 .login-div{
   text-align: center;
   padding: 1em;
+}
+
+/*menú del admin*/
+.menu-admin{
+  display: flex;
+  padding: 200px;
+  flex-direction: var(--navrowdir);
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-admin a{
+  text-align: center;
+  font-size: 3rem;
+  padding: 3em;
+  margin: 50px;
 }

@@ -20,9 +20,13 @@
     <ul>
         <li id="navLogo"><a href="{% url 'petworld:index' %}"><img id="logopatita" src="{% static 'images/petworld-black.png' %}" alt="X"></a></li>
         <li><a href="{% url 'petworld:index' %}">Inicio</a></li>
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'petworld:administracion' %}">Administración</a></li>
+        {% else %}
         <li><a href="{% url 'petworld:acerca_de_nosotros' %}">Acerca de Nosotros</a></li>
         <li><a href="#">Servicios</a></li>
         <li><a href="#">Contactanos</a></li>
+        {% endif %}
     </ul>
 
 </nav>

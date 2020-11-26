@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Listado de Usuarios
+{% endblock title %}
+
+{% block body %}
+
+    {% if object_list %}
+    <div class="admin-listas">
+    <div><a class="btn" href="{% url 'usuarios:crear_usuario'%}">Crear Usuario</a></div>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>E-Mail</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in object_list %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellidos }}</td>
+                <td>
+                    <a class="btn" href="#">Editar</a>
+                    <a class="btn" href="#">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {% else %}
+        <h1> No existen usuarios registrados </h1>
+    {% endif %}
+
+    {% endblock body %}
