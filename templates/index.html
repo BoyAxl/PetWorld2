@@ -74,12 +74,10 @@
             </ul>
         </li>
         <li></li>
-        <li class="red"><a href={% url 'login' %}>
+        <li class="red">{% if request.user.is_authenticated %}<a href={% url 'usuarios:perfil' %} >{% else %}<a href= {% url 'login' %} >{% endif %}
             <!--<label for="show" id="registrarc">-->
             <img class="icono_nav" src="{% static 'images/user.png' %}" alt="X"></label></a></li>
         <li class="red"><a href="#" >
-            <img class="icono_nav" src="{% static 'images/carrito.png' %}" alt="X"></a></li>
-        <li class="red"><a href="http://www.facebook.com/" target="_blank">
             <img class="icono_nav" src="{% static 'images/facebook.png' %}" alt="X"></a></li>
         <li class="red"><a href="https://www.instagram.com/rollo_kaim/" target="_blank">
             <img class="icono_nav" src="{% static 'images/instagram.png' %}" alt="X"></a></li>

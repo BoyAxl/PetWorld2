@@ -49,3 +49,6 @@ class RegistrarUsuario(CreateView):
     form_class = FormularioUsuario
     template_name = 'usuarios/registro_usuario.html'
     success_url = reverse_lazy('petworld:index')
+
+def Perfil(request):
+    return render (request,'usuarios/perfil.html')

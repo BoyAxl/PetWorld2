@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block title %}
+    {{ user.username }}
+{% endblock title %}
+
+{% block body %}
+{% for ass in backends.associated %}
+         {% if ass.provider == 'facebook' %}
+           <div class="login-div">
+               <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+           </div>
+           <div class="login-div">                 <p> Conectado vía:  {{ ass.provider }} </p>
+               <p> Nombre:  {{ ass.extra_data.name }} </p>
+           </div>
+         {% endif %}
+       {% endfor %}
+       <div class="login-div">
+         <button class="btn btn-danger">
+           <a href="{% url 'logout' %}">Logout</a>
+         </button>
+       </div>
+{% endblock %}
