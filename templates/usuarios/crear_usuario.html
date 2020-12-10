@@ -1,20 +1,24 @@
 {% extends 'index.html' %}
-{% block title %}
-    Creación de Usuarios
-{% endblock title %}
+  {% block title %}
+      Creación de Usuarios
+  {% endblock title %}
 
-{% block body %}
-    {% if error %}
-        <h2>{{ error }}</h2>
+
+  {% block body %}
+  {% if request.user.is_staff %}
+      {% if error %}
+          <h2>{{ error }}</h2>
+      {% else %}
+      <div class = 'contenido'>
+        <form class = 'formulario' method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h1>Crear Usuario</h1>
+          {{ form.as_p }}
+          <button class = 'btn' type = "submit">Crear Cuenta</button>
+        </form>
+      </div>
+      {% endif %}
     {% else %}
-    <div class = 'contenido'>
-      <form class = 'formulario' method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h1>Crear Usuario</h1>
-        {{ form.as_p }}
-        <button class = 'btn' type = "submit">Crear</button>
-      </form>
-    </div>
+      <h1>404</h1>
     {% endif %}
-
-{% endblock body %}
+  {% endblock body %}

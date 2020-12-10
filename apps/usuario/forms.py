@@ -26,10 +26,10 @@ class FormularioUsuario(forms.ModelForm):
         }
     ))
 
-    password2 = forms.CharField(label = 'Contraseña de Confirmación', widget = forms.PasswordInput(
+    password2 = forms.CharField(label = 'Confirma tu contraseña', widget = forms.PasswordInput(
         attrs = {
             'class': 'form-control',
-            'placeholder': 'Ingrese nuevamente su contraseña...',
+            'placeholder': 'Reingrese su contraseña...',
             'id': 'password2',
             'required':'required',
         }
@@ -64,3 +64,26 @@ class FormularioUsuario(forms.ModelForm):
                 }
             )
         }
+
+    def clean_password2(self):
+        """ Validación de Contraseña
+            Metodo que valida que ambas contraseñas sea iguales
+            esto antes de que la contraseña sea encriptada y guardada
+            en la base de datos. Retorna la contraseña valida.
+
+            Excepciones:
+            ValidationError -- cuando las contraseñas no son iguales muestra
+            un mensaje de error
+        """
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 != password2:
+            raise forms.ValidationError('Contraseñas no coinciden!')
+        return password2
+
+    def save(self,commit = True):
+        user = super().save(commit = False)
+        user.set_password(self.cleaned_data['password1'])
+        if commit:
+            user.save()
+        return user

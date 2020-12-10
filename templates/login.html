@@ -14,6 +14,12 @@
         <div class="login-div">
           <button type="submit" class="btn-login">Iniciar Sesión</button>
         </div>
+        <div class="login-div">
+          <h2>¿No tienes una cuenta?</h2>
+        </div>
+        <div class ="login-div">
+          <a href="{% url 'usuarios:registro_usuario' %}" class="btn-login">Registrate</a>
+        </div>
       </form>
   </div>
 {% endblock body %}

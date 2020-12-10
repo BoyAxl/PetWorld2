@@ -43,3 +43,9 @@ class CrearUsuario(CreateView):
     form_class = FormularioUsuario
     template_name = 'usuarios/crear_usuario.html'
     success_url = reverse_lazy('usuarios:listar_usuarios')
+
+class RegistrarUsuario(CreateView):
+    model = Usuario
+    form_class = FormularioUsuario
+    template_name = 'usuarios/registro_usuario.html'
+    success_url = reverse_lazy('petworld:index')

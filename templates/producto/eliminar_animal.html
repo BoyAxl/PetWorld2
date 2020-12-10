@@ -3,10 +3,14 @@
     Eliminar {{ animal.nombre }}
 {% endblock title %}
 {% block body %}
-<form method="POST">
-    {% csrf_token %}
-    <h2>¿Desea eliminar el registro {{ animal.nombre }}</h2>
-        <button type = "submit">Eliminar</button>
-        <button><a href="{% url 'petworld:listar_animal' %}">Cancelar</a></button>
-</form>
+  {% if request.user.is_staff %}
+    <form method="POST">
+        {% csrf_token %}
+        <h2>¿Desea eliminar el registro {{ animal.nombre }}</h2>
+            <button type = "submit">Eliminar</button>
+            <button><a href="{% url 'petworld:listar_animal' %}">Cancelar</a></button>
+    </form>
+  {% else %}
+    <h1>404</h1>
+  {% endif %}
 {% endblock body %}

@@ -5,32 +5,36 @@
 {% endblock title %}
 
 {% block body %}
-<div class="admin-listas">
-    <div><a class="btn" href="{% url 'petworld:crear_animal'%}">Crear Animal</a></div>
-    {% if animales %}
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for animal in animales %}
-            <tr>
-                <td>{{ animal.id }}</td>
-                <td>{{ animal.nombre }}</td>
-                <td>
-                    <a class="btn" href="{% url 'petworld:editar_animal' animal.id %}">Editar</a>
-                    <a class="btn" href="{% url 'petworld:eliminar_animal' animal.id %}">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-        <h1> No existen animales registrados </h1>
-    {% endif %}
-  </div>
-    {% endblock body %}
+  {% if request.user.is_staff %}
+    <div class="admin-listas">
+        <div><a class="btn" href="{% url 'petworld:crear_animal'%}">Crear Animal</a></div>
+        {% if animales %}
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for animal in animales %}
+                <tr>
+                    <td>{{ animal.id }}</td>
+                    <td>{{ animal.nombre }}</td>
+                    <td>
+                        <a class="btn" href="{% url 'petworld:editar_animal' animal.id %}">Editar</a>
+                        <a class="btn" href="{% url 'petworld:eliminar_animal' animal.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <h1> No existen animales registrados </h1>
+        {% endif %}
+      </div>
+  {% else %}
+    <h1>404</h1>
+  {% endif %}
+{% endblock body %}
