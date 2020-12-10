@@ -24,7 +24,8 @@ urlpatterns = [
     path('',include(('apps.producto.urls','petworld'))),
     path('usuarios/',include(('apps.usuario.urls','usuarios'))),
     path('accounts/login/',Login.as_view(), name = 'login'),
-    path('logout/',login_required(logoutUsuario),name = 'logout')
+    path('logout/',login_required(logoutUsuario),name = 'logout'),
+    path('oauth/', include('social_django.urls', namespace='social'))
 ]
 
 if settings.DEBUG:

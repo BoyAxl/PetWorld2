@@ -20,6 +20,9 @@
         <div class ="login-div">
           <a href="{% url 'usuarios:registro_usuario' %}" class="btn-login">Registrate</a>
         </div>
+        <div class ="login-div">
+          <a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
+        </div>
       </form>
   </div>
 {% endblock body %}
