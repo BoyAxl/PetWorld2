@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <!--Pack de iconos-->
         <script src="https://kit.fontawesome.com/bbf2a66727.js" crossorigin="anonymous"></script>
+
+        {% load pwa %}
+
+        {% progressive_web_app_meta %}
+
     </head>
 
     <body>
@@ -32,9 +37,10 @@
 </nav>
 
 <nav class="titular">
-
+    {% block cabeza %}
     <h1>Bienvenido {{user.username}} !</h1>
     <h2>No te pierdas nuestros productos para tus mascotas</h2>
+    {% endblock %}
     <div class="wave" style="height: 150px; " ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 516.08,41.94 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #08f;"></path></svg>
     </div><!--wave- ola para adornar-->
 </nav>
@@ -74,9 +80,11 @@
             </ul>
         </li>
         <li></li>
-        <li class="red">{% if request.user.is_authenticated %}<a href={% url 'usuarios:perfil' %} >{% else %}<a href= {% url 'login' %} >{% endif %}
-            <!--<label for="show" id="registrarc">-->
+        <li class="red">{% if requesict.user.is_authenticated %}<a href={% url 'usuarios:perfil' %} >{% else %}<a href= {% url 'login' %} >{% endif %}
+            <!--<labelor="show" id="registrarc">-->
             <img class="icono_nav" src="{% static 'images/user.png' %}" alt="X"></label></a></li>
+        <li class="red"><a href="#" >
+            <img class="icono_nav" src="{% static 'images/carrito.png' %}" alt="X"></a></li>
         <li class="red"><a href="#" >
             <img class="icono_nav" src="{% static 'images/facebook.png' %}" alt="X"></a></li>
         <li class="red"><a href="https://www.instagram.com/rollo_kaim/" target="_blank">

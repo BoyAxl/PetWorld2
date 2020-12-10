@@ -25,7 +25,8 @@ urlpatterns = [
     path('usuarios/',include(('apps.usuario.urls','usuarios'))),
     path('accounts/login/',Login.as_view(), name = 'login'),
     path('logout/',login_required(logoutUsuario),name = 'logout'),
-    path('oauth/', include('social_django.urls', namespace='social'))
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('', include('pwa.urls')),
 ]
 
 if settings.DEBUG:

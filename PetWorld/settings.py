@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'apps.usuario',
     'ckeditor',
     'social_django',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,24 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+PWA_APP_NAME = "PetWorld"
+PWA_APP_DESCRIPTION = "Productos para Mascotas"
+PWA_APP_THEME_COLOR = "#FF7F50"
+PWA_APP_BACKGROUND_COLOR = "#6495ED"
+
+PWA_APP_ICONS = [
+    {
+        "src": "/static/images/dog.png",
+        "sizes": "160x160"
+    }
+]
+
+PWA_APP_ICONS_APPLE = [
+    {
+        "src": "/static/images/dog.png",
+        "sizes": "160x160"
+    }
+]
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "serviceworker.js")
