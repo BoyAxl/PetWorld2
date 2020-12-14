@@ -1,6 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.decorators import login_required
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('producto', ProductoViewset)
 
 urlpatterns = [
     #path('',home, name = 'index'),
@@ -24,5 +28,5 @@ urlpatterns = [
     #path('editar_producto/<int:id>',editarProducto, name = 'editar_producto'),
     path('editar_producto/<int:pk>',login_required(editarProducto.as_view()), name = 'editar_producto'),
     path('eliminar_producto/<int:pk>',login_required(eliminarProducto.as_view()), name = 'eliminar_producto'),
-
+    path('api/', include(router.urls))
 ]

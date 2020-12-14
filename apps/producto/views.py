@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
+from rest_framework import viewsets
+from .serializers import ProductoSerializer
 
 
 # Create your views here.
@@ -107,3 +109,7 @@ class eliminarProducto(DeleteView):
     model = Producto
     template_name = 'producto/eliminar_producto.html'
     success_url = reverse_lazy('petworld:listar_productos')
+
+class ProductoViewset(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer

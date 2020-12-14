@@ -41,3 +41,9 @@ class Producto(models.Model):
 
     def get_absolute_url(self):
         return reverse('petworld:listar_productos')
+
+    def get_image_url(self):
+        if self.imagen and hasattr(self.imagen, 'url'):
+            return self.imagen.url
+        else:
+            return "/static/images/dog.jpg"

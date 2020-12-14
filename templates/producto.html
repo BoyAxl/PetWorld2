@@ -12,7 +12,7 @@
             <h1>{{ producto.nombre }}</h1>
           </strong>
           <img class="prod-img-top" style="width:250px"
-            src='{{ producto.imagen.url }}' class="image-carousel" />
+            src='{{ producto.get_image_url }}' class="image-carousel" />
             <h2>${{ producto.valor }}</h2>
             <p>{{ producto.descripcion | safe }}</p>
             <button class="btn" type = "submit">Agregar al Carrito</button>

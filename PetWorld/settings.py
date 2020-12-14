@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'apps.usuario',
     'ckeditor',
     'social_django',
+    'rest_framework',
     'pwa',
 ]
 

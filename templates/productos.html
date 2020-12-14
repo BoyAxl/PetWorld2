@@ -12,7 +12,7 @@
           {{ producto.nombre }}: ${{producto.valor}}</h2>
 
           <div class="prod-img-top " style="width:center">
-          <a href="{% url 'petworld:detalleProducto' producto.slug %}"><img src='{{ producto.imagen.url }}' class="image-carousel" /></a>
+          <a href="{% url 'petworld:detalleProducto' producto.slug %}"><img src='{{ producto.get_image_url }}' class="image-carousel" /></a>
           {% endfor %}
         </strong>
       </div>

@@ -101,7 +101,7 @@
           {% for producto in productos %}
           <div class="carousel-cell"><a class="precio" href=#>
               <h3 class="titulo-prod">{{ producto.nombre }}</h3>
-              <img class="image-carousel" src='{{ producto.imagen.url }}' alt="x">
+              <img class="image-carousel" src='{{ producto.get_image_url }}' alt="x">
               <p class="precio">CLP ${{ producto.valor }}</p></a>
           </div>
           {% endfor %}

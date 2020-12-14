@@ -1,0 +1,15 @@
+{
+  "name": "PetWorld",
+  "short_name": "PetW",
+  "icons": [
+      {
+          "src": "/static/images/dog.png",
+          "sizes": "160x160",
+          "type": "image/png"
+      }
+  ],
+  "start_url": "/templates/index.html",
+  "display": "standalone",
+  "background_color": "#6495ED",
+  "theme_color": "#FF7F50"
+}
