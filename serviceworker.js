@@ -50,3 +50,30 @@ self.addEventListener("fetch", event => {
             })
     )
 });
+
+//codigo para notificaciones push
+
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
+
+var firebaseConfig = {
+  apiKey: "AIzaSyDYgPWad1qxNEBDDRsLo1bXcqjgSs4WDMQ",
+  authDomain: "petworld-4cd53.firebaseapp.com",
+  projectId: "petworld-4cd53",
+  storageBucket: "petworld-4cd53.appspot.com",
+  messagingSenderId: "912564427555",
+  appId: "1:912564427555:web:4f4ffba5b88f43b30a0a96"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+let messaging = firebase.messaging();
+
+messaging.setBackgroundMessageHandler(function(payload){
+  let title = payload.notification.title;
+  let options ={
+    body: payload.notification.body,
+    icon: payload.notification.icon
+  }
+  self.registration.showNotification(title, options);
+})

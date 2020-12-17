@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework',
     'pwa',
+    'fcm_django',
 ]
 
 MIDDLEWARE = [
@@ -179,3 +180,17 @@ PWA_APP_ICONS_APPLE = [
 ]
 
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "serviceworker.js")
+
+FCM_DJANGO_SETTINGS = {
+         # default: _('FCM Django')
+        "APP_VERBOSE_NAME": "PetWorld",
+         # Your firebase API KEY
+        "FCM_SERVER_KEY": "AAAA1HkUGyM:APA91bGOlN-x-KxmhxmXGPlGb055Gnzj1Etc7Yci_qYFwLshh10gWFFA2V6d1cxrBDOfZ3lNk3caGHs8iPw6zahYr7aHqqCJxikiNBeOANb9VEAYk_iItco-HwgHlqF41EPrhVpbt_6m",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": True,
+}

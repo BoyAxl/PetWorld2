@@ -8,7 +8,10 @@ from django.views.generic import TemplateView, ListView, UpdateView, CreateView,
 from django.urls import reverse_lazy
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
+from fcm_django.models import FCMDevice
 
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 class home(TemplateView):  #Esta es una Vista basada en una Clase <3
@@ -88,10 +91,31 @@ def eliminarAnimal(request,id):
 ###################  CRUDS Productos ####################
 
 # que nos permite crear un objeto del tipo Producto
-class crearProducto(CreateView):
-    model = Producto
-    template_name = 'producto/crear_producto.html'
-    form_class = ProductoForm
+
+def crearProducto(request):
+    if request.method == 'POST':
+        producto_form = ProductoForm(request.POST, request.FILES)
+        if producto_form.is_valid():
+            producto_form.save()
+
+            dispositivos = FCMDevice.objects.filter(active=True)
+            dispositivos.send_message(
+                title="Nuevo Producto Agregado",
+                body="Se ha agregado: " + producto_form.cleaned_data['nombre'], 
+                icon="/static/images/dog.png")
+
+            return redirect('petworld:index')
+    else:
+        producto_form = ProductoForm()
+    return render(request,'producto/crear_producto.html',{'producto_form':producto_form})
+
+#class crearProducto(CreateView):
+#    model = Producto
+#    template_name = 'producto/crear_producto.html'
+#    form_class = ProductoForm
+
+    #obtenemos todos los dispositivos
+
 
 #que nos permite listar los objetos de tipo Producto.
 class listarProductos(ListView):

@@ -22,7 +22,7 @@ urlpatterns = [
     path('eliminar_animal/<int:id>',login_required(eliminarAnimal), name = 'eliminar_animal'),
     #### PATHS DE CURDS DE PRODUCTOS ######
     #path('crear_producto/',crearProducto, name = 'crear_producto'),
-    path('crear_producto/',login_required(crearProducto.as_view()), name = 'crear_producto'),
+    path('crear_producto/',login_required(crearProducto), name = 'crear_producto'),
     #path('listar_productos/',listarProductos, name = 'listar_productos'),
     path('listar_productos/',login_required(listarProductos.as_view()), name = 'listar_productos'),
     #path('editar_producto/<int:id>',editarProducto, name = 'editar_producto'),
